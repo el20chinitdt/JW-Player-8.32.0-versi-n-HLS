@@ -14,15 +14,77 @@
       margin: auto;
       background-color: #000;
       box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      position: relative;
     }
 
-    .jwplayer { color: #fff !important; font-family: 'Segoe UI', sans-serif; }
-    .jw-controlbar { background-color: rgba(20, 20, 20, 0.85) !important; border-top: 1px solid #333; }
-    .jw-button-color { color: #ccc !important; }
-    .jw-icon { filter: brightness(1.4); }
-    .jw-text-track-display { background-color: rgba(0,0,0,0.6); color: #fff; font-size:16px; font-family:'Segoe UI',sans-serif; }
-    .jw-title { color: #ddd !important; }
-    .jw-display-icon-container { background-color: rgba(0,0,0,0.5); }
+    .jwplayer {
+      color: #fff !important;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ===============================
+       CONTROLBAR NATIVA ABAJO
+       =============================== */
+    .jw-controlbar {
+      background-color: rgba(20, 20, 20, 0.85) !important;
+      border-top: 1px solid #333;
+    }
+
+    /* ===============================
+       BOTONES VISUALMENTE ARRIBA
+       =============================== */
+    .jw-controlbar .jw-button-container {
+      position: absolute !important;
+      top: -46px;
+      left: 0;
+      right: 0;
+      height: 46px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.35)
+      );
+      border-bottom: 1px solid #333;
+      padding: 4px 8px;
+      z-index: 10;
+    }
+
+    /* Espacio para que no tape el video */
+    .jwplayer video {
+      margin-top: 46px;
+    }
+
+    .jw-button-color {
+      color: #ccc !important;
+    }
+
+    .jw-button-color:hover {
+      color: #FFD120 !important;
+    }
+
+    .jw-icon {
+      filter: brightness(1.4);
+    }
+
+    .jw-time {
+      color: #eee !important;
+      font-size: 12px;
+    }
+
+    .jw-text-track-display {
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size:16px;
+      font-family:'Segoe UI',sans-serif;
+    }
+
+    .jw-title {
+      color: #ddd !important;
+    }
+
+    .jw-display-icon-container {
+      background-color: rgba(0,0,0,0.5);
+    }
 
     .ios-landscape {
       transform: rotate(90deg);
