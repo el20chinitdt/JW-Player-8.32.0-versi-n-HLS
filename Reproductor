@@ -128,7 +128,7 @@ function iniciarReproductor() {
     width: "100%",
     height: "100%",
     aspectratio: "16:9",
-    autostart: true,
+    autostart: false,
     mute: false,
     preload: "auto",
 
@@ -153,7 +153,7 @@ function iniciarReproductor() {
           const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
           const source = audioCtx.createMediaElementSource(video);
           const gain = audioCtx.createGain();
-          gain.gain.value = 2;
+          gain.gain.value = 5;
           source.connect(gain);
           gain.connect(audioCtx.destination);
           video.muted = false;
