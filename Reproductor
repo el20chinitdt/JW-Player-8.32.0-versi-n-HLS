@@ -144,33 +144,19 @@ function iniciarReproductor() {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   const isSmartTV = /SmartTV|Tizen|Web0S|SmartHub|Chromecast/i.test(navigator.userAgent);
 
-  // Audio Boost
-  if (!isSmartTV) {
-    player.on("play", function () {
-      const video = document.querySelector("#player video");
-      if (video && !video.audioBoostApplied) {
-        try {
-          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          const source = audioCtx.createMediaElementSource(video);
-          const gain = audioCtx.createGain();
-          gain.gain.value = 5;
-          source.connect(gain);
-          gain.connect(audioCtx.destination);
-          video.muted = false;
-          video.volume = 1.0;
-          video.audioBoostApplied = true;
-        } catch(e) { console.warn("Audio boost no disponible:", e); }
-      }
-    });
-  }
+  /* =======================================================
+     ELIMINADO: Bloque de Audio Boost (Gain 5)
+     =======================================================
+  */
 
-  // SmartTV fallback
-  if (isSmartTV) {
-    player.on("ready", function () {
-      const video = document.querySelector("#player video");
-      if (video) { video.muted = false; try { video.volume = 1.0; } catch(e){} }
-    });
-  }
+  // Asegurar volumen normal al iniciar (útil para SmartTVs y general)
+  player.on("ready", function () {
+    const video = document.querySelector("#player video");
+    if (video) { 
+        video.muted = false; 
+        try { video.volume = 1.0; } catch(e){} 
+    }
+  });
 
   // Auto selección de audio
   const lang = 1;
